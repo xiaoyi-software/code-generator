@@ -1,0 +1,76 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using mvc.Models;
+using mvc.Models.Dtos;
+using mvc.Data;
+
+namespace mvc.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class {{EntityName}}Controller : ControllerBase
+    {
+        private readonly CrmDbContext _context;
+        private readonly IMapper _mapper;
+
+        public {{EntityName}}Controller(CrmDbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<{{EntityName}}Dto>>> Get{{EntityName}}s()
+        {
+            var entities = await _context.{{Schema.TableName}}.ToListAsync();
+            return Ok(_mapper.Map<IEnumerable<{{EntityName}}Dto>>(entities));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<{{EntityName}}Dto>> Get{{EntityName}}(int id)
+        {
+            var entity = await _context.{{Schema.TableName}}.FindAsync(id);
+            if (entity == null)
+            {
+                return NotFound();
+            }
+            return Ok(_mapper.Map<{{EntityName}}Dto>(entity));
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<{{EntityName}}Dto>> Create{{EntityName}}({{EntityName}}Dto dto)
+        {
+            var entity = _mapper.Map<{{EntityName}}>(dto);
+            _context.{{Schema.TableName}}.Add(entity);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(Get{{EntityName}}), new { id = entity.Id }, _mapper.Map<{{EntityName}}Dto>(entity));
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update{{EntityName}}(int id, {{EntityName}}Dto dto)
+        {
+            var entity = await _context.{{Schema.TableName}}.FindAsync(id);
+            if (entity == null)
+            {
+                return NotFound();
+            }
+            _mapper.Map(dto, entity);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete{{EntityName}}(int id)
+        {
+            var entity = await _context.{{Schema.TableName}}.FindAsync(id);
+            if (entity == null)
+            {
+                return NotFound();
+            }
+            _context.{{Schema.TableName}}.Remove(entity);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+    }
+} 

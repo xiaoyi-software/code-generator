@@ -1,0 +1,28 @@
+{% if Debug %}
+// Debug Info:
+// EntityName: {{ EntityName }}
+// Schema: {{ Schema | json }}
+{% endif %}
+
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace mvc.Models
+{
+    [Table("{{ Schema.TableName }}")]
+    public class {{ EntityName }}
+    {
+        {% for column in Schema.Columns %}
+        {% if column.IsPrimaryKey %}[Key]{% endif %}
+        {% if column.IsIdentity %}[DatabaseGenerated(DatabaseGeneratedOption.Identity)]{% endif %}
+        {% if column.MaxLength != null %}[StringLength({{ column.MaxLength }})]{% endif %}
+        {% if column.IsNullable == false %}[Required]{% endif %}
+        public {{ column.DataType }} {{ column.Name }} { get; set; }{% if column.IsNullable %} = default!;{% endif %}
+
+        {% endfor %}
+        {% for fk in Schema.ForeignKeys %}
+        public virtual {{ fk.PrincipalTable }} {{ fk.PrincipalTable }} { get; set; } = default!;
+        {% endfor %}
+    }
+} 

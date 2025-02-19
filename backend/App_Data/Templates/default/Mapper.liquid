@@ -1,0 +1,15 @@
+using AutoMapper;
+using mvc.Models;
+using mvc.Models.Dtos;
+
+namespace mvc.Mappings
+{
+    public class {{EntityName}}Profile : Profile
+    {
+        public {{EntityName}}Profile()
+        {
+            CreateMap<{{EntityName}}, {{EntityName}}Dto>();
+            CreateMap<{{EntityName}}Dto, {{EntityName}}>();
+        }
+    }
+} 

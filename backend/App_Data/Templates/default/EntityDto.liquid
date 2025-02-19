@@ -1,0 +1,15 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace mvc.Models.Dtos
+{
+    public class {{ EntityName }}Dto
+    {
+        {% for column in Schema.Columns %}
+        {% if column.IsNullable == false %}[Required]{% endif %}
+        {% if column.MaxLength != null %}[StringLength({{ column.MaxLength }})]{% endif %}
+        public {{ column.DataType }} {{ column.Name }} { get; set; }{% if column.IsNullable %} = default!;{% endif %}
+
+        {% endfor %}
+    }
+} 

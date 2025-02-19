@@ -1,0 +1,38 @@
+import request from '@/utils/request'
+
+export function get{{EntityName}}List() {
+  return request({
+    url: '/api/{{EntityName}}',
+    method: 'get'
+  })
+}
+
+export function get{{EntityName}}(id) {
+  return request({
+    url: `/api/{{EntityName}}/${id}`,
+    method: 'get'
+  })
+}
+
+export function create{{EntityName}}(data) {
+  return request({
+    url: '/api/{{EntityName}}',
+    method: 'post',
+    data
+  })
+}
+
+export function update{{EntityName}}(id, data) {
+  return request({
+    url: `/api/{{EntityName}}/${id}`,
+    method: 'put',
+    data
+  })
+}
+
+export function delete{{EntityName}}(id) {
+  return request({
+    url: `/api/{{EntityName}}/${id}`,
+    method: 'delete'
+  })
+} 
