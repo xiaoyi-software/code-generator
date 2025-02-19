@@ -118,13 +118,16 @@ Copyright © 2024 小易软件 保留所有权利。
 ### 联系方式
 
 - **作者QQ**: 1035716090
-- **微信**: 
 
 <div style="display: flex; gap: 20px;">
   <div>
     <img src="resources/qq.jpg" width="200" alt="QQ二维码">
     <p align="center"><i>QQ咨询</i></p>
   </div>
+</div>
+- **微信**: 
+
+<div style="display: flex; gap: 20px;">
   <div>
     <img src="resources/qrcode.jpg" width="200" alt="微信二维码">
     <p align="center"><i>微信咨询</i></p>
