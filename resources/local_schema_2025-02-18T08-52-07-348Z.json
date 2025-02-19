@@ -1,0 +1,291 @@
+{
+  "Customer": {
+    "tableName": "Customers",
+    "schema": null,
+    "comment": null,
+    "columns": [
+      {
+        "name": "Id",
+        "dbType": "int",
+        "isNullable": false,
+        "isPrimaryKey": true,
+        "isIdentity": true,
+        "maxLength": null,
+        "comment": null
+      },
+      {
+        "name": "CreatedAt",
+        "dbType": "datetime(6)",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": null,
+        "comment": null
+      },
+      {
+        "name": "Description",
+        "dbType": "varchar(500)",
+        "isNullable": true,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": 500,
+        "comment": null
+      },
+      {
+        "name": "Industry",
+        "dbType": "varchar(50)",
+        "isNullable": true,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": 50,
+        "comment": null
+      },
+      {
+        "name": "Name",
+        "dbType": "varchar(100)",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": 100,
+        "comment": null
+      },
+      {
+        "name": "UpdatedAt",
+        "dbType": "datetime(6)",
+        "isNullable": true,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": null,
+        "comment": null
+      },
+      {
+        "name": "Website",
+        "dbType": "varchar(200)",
+        "isNullable": true,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": 200,
+        "comment": null
+      }
+    ],
+    "foreignKeys": []
+  },
+  "Contract": {
+    "tableName": "Contracts",
+    "schema": null,
+    "comment": null,
+    "columns": [
+      {
+        "name": "Id",
+        "dbType": "int",
+        "isNullable": false,
+        "isPrimaryKey": true,
+        "isIdentity": true,
+        "maxLength": null,
+        "comment": null
+      },
+      {
+        "name": "ContractNumber",
+        "dbType": "varchar(50)",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": 50,
+        "comment": null
+      },
+      {
+        "name": "CreatedAt",
+        "dbType": "datetime(6)",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": null,
+        "comment": null
+      },
+      {
+        "name": "CustomerId",
+        "dbType": "int",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": null,
+        "comment": null
+      },
+      {
+        "name": "EndDate",
+        "dbType": "datetime(6)",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": null,
+        "comment": null
+      },
+      {
+        "name": "SignedDate",
+        "dbType": "datetime(6)",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": null,
+        "comment": null
+      },
+      {
+        "name": "StartDate",
+        "dbType": "datetime(6)",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": null,
+        "comment": null
+      },
+      {
+        "name": "Status",
+        "dbType": "varchar(50)",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": 50,
+        "comment": null
+      },
+      {
+        "name": "Title",
+        "dbType": "varchar(200)",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": 200,
+        "comment": null
+      },
+      {
+        "name": "UpdatedAt",
+        "dbType": "datetime(6)",
+        "isNullable": true,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": null,
+        "comment": null
+      },
+      {
+        "name": "Value",
+        "dbType": "decimal(18,2)",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": null,
+        "comment": null
+      }
+    ],
+    "foreignKeys": [
+      {
+        "name": "FK_Contracts_Customers_CustomerId",
+        "properties": [
+          "CustomerId"
+        ],
+        "principalTable": "Customers",
+        "principalColumns": [
+          "Id"
+        ]
+      }
+    ]
+  },
+  "Contact": {
+    "tableName": "Contacts",
+    "schema": null,
+    "comment": null,
+    "columns": [
+      {
+        "name": "Id",
+        "dbType": "int",
+        "isNullable": false,
+        "isPrimaryKey": true,
+        "isIdentity": true,
+        "maxLength": null,
+        "comment": null
+      },
+      {
+        "name": "CreatedAt",
+        "dbType": "datetime(6)",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": null,
+        "comment": null
+      },
+      {
+        "name": "CustomerId",
+        "dbType": "int",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": null,
+        "comment": null
+      },
+      {
+        "name": "Email",
+        "dbType": "varchar(100)",
+        "isNullable": true,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": 100,
+        "comment": null
+      },
+      {
+        "name": "FirstName",
+        "dbType": "varchar(50)",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": 50,
+        "comment": null
+      },
+      {
+        "name": "LastName",
+        "dbType": "varchar(50)",
+        "isNullable": false,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": 50,
+        "comment": null
+      },
+      {
+        "name": "Phone",
+        "dbType": "varchar(20)",
+        "isNullable": true,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": 20,
+        "comment": null
+      },
+      {
+        "name": "Position",
+        "dbType": "varchar(100)",
+        "isNullable": true,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": 100,
+        "comment": null
+      },
+      {
+        "name": "UpdatedAt",
+        "dbType": "datetime(6)",
+        "isNullable": true,
+        "isPrimaryKey": false,
+        "isIdentity": false,
+        "maxLength": null,
+        "comment": null
+      }
+    ],
+    "foreignKeys": [
+      {
+        "name": "FK_Contacts_Customers_CustomerId",
+        "properties": [
+          "CustomerId"
+        ],
+        "principalTable": "Customers",
+        "principalColumns": [
+          "Id"
+        ]
+      }
+    ]
+  }
+}
